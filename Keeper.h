@@ -1,7 +1,3 @@
-//
-// Created by Сергей Баталев on 29/09/2018.
-//
-
 #ifndef LAB1_23_KEEPER_H
 #define LAB1_23_KEEPER_H
 
