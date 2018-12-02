@@ -1,7 +1,3 @@
-//
-// Created by Сергей Баталев on 29/09/2018.
-//
-
 #include <fstream>
 #include "Keeper.h"
 
