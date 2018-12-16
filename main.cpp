@@ -25,46 +25,50 @@ int main() {
         cout << "5 - exit" << endl;
         cin >> mode;
         if (mode == 0) {
-            ifstream file;
-            file.open(filename);
-            int count;
-            file >> count;
-            for (int j = 0; j < count; ++j) {
-                string mode;
-                file >> mode;
-                string fio, words;
-                file.ignore();
-                getline(file, fio);
-                int born, die, bookSize;
-                file >> born >> die;
-                file >> bookSize;
-                file.ignore();
-                getline(file, words);
-                auto *lines = new string[bookSize];
-                istringstream iss(words);
-                string s;
-                for (int l = 0; l < bookSize; ++l) {
-                    getline(iss, s, ' ');
-                    lines[l] = s;
-                }
+			try {
+				ifstream file;
+				file.open(filename);
+				int count;
+				file >> count;
+				for (int j = 0; j < count; ++j) {
+					string mode;
+					file >> mode;
+					string fio, words;
+					file.ignore();
+					getline(file, fio);
+					int born, die, bookSize;
+					file >> born >> die;
+					file >> bookSize;
+					file.ignore();
+					getline(file, words);
+					auto *lines = new string[bookSize];
+					istringstream iss(words);
+					string s;
+					for (int l = 0; l < bookSize; ++l) {
+						getline(iss, s, ' ');
+						lines[l] = s;
+					}
+					if (mode == "Romantic") {
+						string bio;
+						file.ignore();
+						getline(file, bio);
+						auto *r = new Romantic(fio, born, die, lines, bookSize, bio);
+						k->add(*r);
+					} else if (mode == "Poet") {
+						auto *p = new Poets(fio, born, die, lines, bookSize);
+						k->add(*p);
+					} else if (mode == "Fantastic") {
+						bool have;
+						file >> have;
+						auto *f = new Fantastic(fio, born, die, lines, bookSize, have);
+						k->add(*f);
+					}
+				}
+				file.close();
+			} catch (exception e) {
+				cout << "Cant read from file" << e.what();
+			}
 
-                if (mode == "Romantic") {
-                    string bio;
-                    file.ignore();
-                    getline(file, bio);
-                    auto *r = new Romantic(fio, born, die, lines, bookSize, bio);
-                    k->add(*r);
-                } else if (mode == "Poet") {
-                    auto *p = new Poets(fio, born, die, lines, bookSize);
-                    k->add(*p);
-                } else if (mode == "Fantastic") {
-                    bool have;
-                    file >> have;
-                    auto *f = new Fantastic(fio, born, die, lines, bookSize, have);
-                    k->add(*f);
-                }
-            }
-            file.close();
             // add new element to array
         } else if (mode == 1) {
             cout << "1 - Poet, 2 - Romantic, 3 - Fantastic" << endl;
@@ -118,7 +122,11 @@ int main() {
             }
             // write to file
         } else if (mode == 2) {
-            k->writeToFile(filename);
+			try {
+				k->writeToFile(filename);
+			} catch (exception e) {
+				cout << "Cant write to file" << e.what();
+			}
             // remove element
         } else if (mode == 3) {
             int index;
