@@ -17,12 +17,12 @@ int main() {
     int mode;
     while (fl) {
         // read menu data
-        cout << "0 - read from file text.txt" << endl;
-        cout << "1 - add new element" << endl;
-        cout << "2 - write to file" << endl;
-        cout << "3 - remove element" << endl;
-        cout << "4 - print keeper" << endl;
-        cout << "5 - exit" << endl;
+        cout << "0 - Прочитать из файла text.txt" << endl;
+        cout << "1 - Добавить нового писателя" << endl;
+        cout << "2 - записать в файл" << endl;
+        cout << "3 - удалить писателя" << endl;
+        cout << "4 - вывести всех писателей на экран" << endl;
+        cout << "5 - выход" << endl;
         cin >> mode;
         if (mode == 0) {
 			try {
@@ -30,7 +30,7 @@ int main() {
 				file.open(filename);
 				int count;
 				file >> count;
-				cout << "Reading " << count << " records" << endl;
+				cout << "Прочитано: " << count << " писателей" << endl;
 				for (int j = 0; j < count; ++j) {
 					string mode;
 					file >> mode;
@@ -67,29 +67,29 @@ int main() {
 				}
 				file.close();
 			} catch (exception e) {
-				cout << "Cant read from file" << e.what();
+				cout << "Невозможно считать из файла" << e.what();
 			}
 
             // add new element to array
         } else if (mode == 1) {
-            cout << "1 - Poet, 2 - Romantic, 3 - Fantastic" << endl;
+            cout << "1 - Поет, 2 - Романтик, 3 - Фантастик" << endl;
             int type;
-            cout << "enter element type" << endl;
+            cout << "Выберите тип" << endl;
             cin >> type;
-            cout << "enter fio" << endl;
+            cout << "Введите ФИО" << endl;
             string fio;
             cin.ignore();
             getline(cin, fio);
             int born, die;
-            cout << "enter born and die year" << endl;
+            cout << "укажите дату рождения и дату смерти" << endl;
             cin >> born >> die;
             int bookSize;
-            cout << "Enter book size" << endl;
+            cout << "Введите количество книг" << endl;
             cin >> bookSize;
             string *books = new string[bookSize];
             string s;
             for (int i = 0; i < bookSize; ++i) {
-                cout << "Enter book name" << endl;
+                cout << "Введите название книги" << endl;
                 cin >> s;
                 books[i] = s;
             }
@@ -100,7 +100,7 @@ int main() {
                     break;
                 }
                 case 2: {
-                    cout << "Enter short bio" << endl;
+                    cout << "Введите короткую биографию" << endl;
                     string bio;
                     cin.ignore();
                     getline(cin, bio);
@@ -109,7 +109,7 @@ int main() {
                     break;
                 }
                 case 3: {
-                    cout << "Enter have this fantastic books? 1- yes, 0 - no" << endl;
+                    cout << "Введите если ли у него книги из фантастики? 1- да, 0 - нет" << endl;
                     bool have;
                     cin >> have;
                     auto *f = new Fantastic(fio, born, die, books, bookSize, have);
@@ -117,7 +117,7 @@ int main() {
                     break;
                 }
                 default: {
-                    cout << "Entering none" << endl;
+                    cout << "Выбрано ничего ;(" << endl;
                     break;
                 }
             }
@@ -126,7 +126,7 @@ int main() {
 			try {
 				k->writeToFile(filename);
 			} catch (exception e) {
-				cout << "Cant write to file" << e.what();
+				cout << "Невозможно записать в файл" << e.what();
 			}
             // remove element
         } else if (mode == 3) {
