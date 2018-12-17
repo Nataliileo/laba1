@@ -12,6 +12,7 @@ using namespace std;
 const string filename = "text.txt";
 
 int main() {
+    setlocale(LC_ALL, "Russian");
     auto *k = new Keeper();
     bool fl = true;
     int mode;
