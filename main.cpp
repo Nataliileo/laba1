@@ -30,6 +30,7 @@ int main() {
 				file.open(filename);
 				int count;
 				file >> count;
+				cout << "Reading " << count << " records" << endl;
 				for (int j = 0; j < count; ++j) {
 					string mode;
 					file >> mode;
@@ -83,7 +84,7 @@ int main() {
             cout << "enter born and die year" << endl;
             cin >> born >> die;
             int bookSize;
-            cout << "Enter book size";
+            cout << "Enter book size" << endl;
             cin >> bookSize;
             string *books = new string[bookSize];
             string s;
