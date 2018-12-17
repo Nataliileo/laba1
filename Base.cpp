@@ -9,7 +9,7 @@ int Base::getBookSize() const {
 }
 
 ostream &operator<<(ostream &os, const Base &base) {
-    os << "fio: " << base.fio << " bornYear: " << base.bornYear << " dieYear: " << base.dieYear << " books: " << endl;
+    os << "ФИО: " << base.fio << " родился: " << base.bornYear << " умер: " << base.dieYear << " книги: " << endl;
     for (int i = 0; i < base.bookSize; ++i) {
         os << base.books[i] << " ";
     }

@@ -30,7 +30,7 @@ ostream &operator<<(ostream &fo, const Fantastic &f) {
         fo << f.books[i] << " ";
     }
     fo << endl;
-    fo << "Have films: " << (f.haveFilms ? "yes" : "no") << endl;
+    fo << "Имеются ли фильсы? " << (f.haveFilms ? "да" : "нет") << endl;
     return fo;
 }
 

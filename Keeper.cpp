@@ -30,7 +30,7 @@ Keeper &Keeper::add(Base &b) {
 
 Keeper &Keeper::remove(int index) {
     if ((index >= this->size) || (index < 0)) {
-        cout << "Error remove element" << endl;
+        cout << "Ошибка удаления элемента" << endl;
     } else {
         auto **copy = new Base*[this->size];
         for (int i = 0; i < this->size; ++i) {

@@ -110,7 +110,7 @@ int main() {
                     break;
                 }
                 case 3: {
-                    cout << "Введите если ли у него книги из фантастики? 1- да, 0 - нет" << endl;
+                    cout << "Введите если ли фильмы? 1- да, 0 - нет" << endl;
                     bool have;
                     cin >> have;
                     auto *f = new Fantastic(fio, born, die, books, bookSize, have);
